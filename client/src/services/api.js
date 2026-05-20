@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://yummy-colony-dares.ngrok-free.dev/api';
 
 // Core helper to retrieve standard headers including JWT authorizations
 const getRequestHeaders = () => {
