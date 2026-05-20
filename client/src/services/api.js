@@ -4,7 +4,8 @@ const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://yummy-colony-dares
 const getRequestHeaders = () => {
   const token = localStorage.getItem('token');
   const headers = {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'ngrok-skip-browser-warning': 'true'
   };
   
   if (token) {
