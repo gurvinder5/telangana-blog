@@ -16,7 +16,7 @@ const About = () => {
         <div className="container py-4">
           <div className="mb-4 text-center d-flex justify-content-center">
             <div style={{ background: 'rgba(255, 255, 255, 0.95)', padding: '6px 16px', borderRadius: '50px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
-              <img src={`${import.meta.env.BASE_URL}logo-emblem.png`} alt="Telangana Emblem" style={{ height: '30px', width: 'auto' }} />
+              <i className="bi bi-info-circle-fill text-teal" style={{ color: '#0d9488' }}></i>
               <span className="text-dark fw-bold" style={{ fontSize: '0.85rem', letterSpacing: '0.05em' }}>ABOUT THE STATE</span>
             </div>
           </div>

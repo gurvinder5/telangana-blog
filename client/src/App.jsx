@@ -6,7 +6,6 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Components
 import Navbar from './components/Navbar';
-import IntroVideo from './components/IntroVideo';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
@@ -24,15 +23,7 @@ function App() {
   const [user, setUser] = useState(null);
   const [toasts, setToasts] = useState([]);
 
-  // Show intro video only once per browser session
-  const [showIntro, setShowIntro] = useState(
-    () => !sessionStorage.getItem('intro_played')
-  );
 
-  const handleIntroFinish = () => {
-    sessionStorage.setItem('intro_played', 'true');
-    setShowIntro(false);
-  };
 
   // Load session from local storage on initial mount
   useEffect(() => {
@@ -80,7 +71,6 @@ function App() {
 
   return (
     <>
-      {showIntro && <IntroVideo onFinish={handleIntroFinish} />}
     <Router>
       {/* Navigation bar */}
       <Navbar user={user} onLogout={handleLogout} />
@@ -127,9 +117,9 @@ function App() {
         <div className="container">
           <div className="row g-4 mb-4">
             <div className="col-lg-5">
-              <div className="mb-3 d-inline-block" style={{ background: '#fff', padding: '6px 12px', borderRadius: '8px' }}>
-                <img src={`${import.meta.env.BASE_URL}logo-horizontal.png`} alt="Telangana Tourism Logo" style={{ height: '36px', width: 'auto' }} />
-              </div>
+              <h5 className="text-white fw-bold mb-3 d-flex align-items-center gap-2">
+                <i className="bi bi-compass text-warning"></i> Telangana Tourism
+              </h5>
               <p className="small max-w-sm" style={{ lineHeight: '1.7' }}>
                 A modern full-stack tourism blogging platform promoting the majestic landmarks, rich temples, cascading waterfalls, local culinary arts, and cultural festivals of India's youngest state.
               </p>
