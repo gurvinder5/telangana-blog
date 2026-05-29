@@ -46,3 +46,25 @@ INSERT INTO blogs (id, title, description, image_url, location, category, create
 
 (5, 'Marveling at Nagarjuna Sagar Dam', 'Nagarjuna Sagar Dam is one of the world''s largest and tallest masonry dams, built across the mighty Krishna River. Straddling the border of Telangana and Andhra Pradesh, it is a magnificent sight, especially during the monsoon season when the crest gates are opened, creating a roaring wall of water. From the dam, you can take a scenic ferry ride to Nagarjunakonda, an island museum housing priceless Buddhist relics and ruins dating back to the 3rd century AD. The beautiful valley surroundings and calm waters make it an ideal weekend getaway.', 'https://images.unsplash.com/photo-1580618672591-eb180b1a973f?auto=format&fit=crop&w=1200&q=80', 'Nagarjuna Sagar', 'Waterfalls', 1)
 ON DUPLICATE KEY UPDATE id=id;
+
+-- CREATE CONTACTS TABLE
+CREATE TABLE IF NOT EXISTS contacts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    subject VARCHAR(255) NOT NULL,
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- CREATE REVIEWS TABLE
+CREATE TABLE IF NOT EXISTS reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    blog_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    rating INT NOT NULL CHECK(rating BETWEEN 1 AND 5),
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (blog_id) REFERENCES blogs(id) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+

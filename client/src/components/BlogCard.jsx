@@ -41,6 +41,25 @@ const BlogCard = ({ blog }) => {
             <i className="bi bi-calendar3 me-1"></i> {formatPublishDate(created_at)}
           </span>
         </div>
+
+        {/* Rating summary */}
+        <div className="d-flex align-items-center gap-2 mb-2 small" style={{ fontSize: '0.85rem' }}>
+          {blog.review_count > 0 ? (
+            <div className="d-flex align-items-center gap-1">
+              <span className="text-warning">
+                <i className="bi bi-star-fill"></i>
+              </span>
+              <strong className="text-dark">{Number(blog.average_rating).toFixed(1)}</strong>
+              <span className="text-muted">({blog.review_count} {blog.review_count === 1 ? 'review' : 'reviews'})</span>
+            </div>
+          ) : (
+            <div className="d-flex align-items-center gap-1 text-muted opacity-75">
+              <span><i className="bi bi-star"></i></span>
+              <span>No reviews yet</span>
+            </div>
+          )}
+        </div>
+
         <h3 className="blog-card-title text-capitalize">{title}</h3>
         <p className="blog-card-text text-muted">{description}</p>
         

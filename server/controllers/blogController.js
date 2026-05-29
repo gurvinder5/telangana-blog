@@ -8,9 +8,11 @@ exports.getAllBlogs = async (req, res) => {
 
   try {
     let query = `
-      SELECT b.id, b.title, b.description, b.image_url, b.location, b.category, b.created_at, b.created_by, u.name as author 
+      SELECT b.id, b.title, b.description, b.image_url, b.location, b.category, b.created_at, b.created_by, u.name as author,
+             COALESCE(AVG(r.rating), 0) as average_rating, COUNT(r.id) as review_count
       FROM blogs b 
       JOIN users u ON b.created_by = u.id
+      LEFT JOIN reviews r ON b.id = r.blog_id
     `;
     const queryParams = [];
     const conditions = [];
@@ -33,6 +35,9 @@ exports.getAllBlogs = async (req, res) => {
       query += ' WHERE ' + conditions.join(' AND ');
     }
 
+    // Group by to support aggregations
+    query += ' GROUP BY b.id, u.name';
+
     // Order by latest blogs first
     query += ' ORDER BY b.created_at DESC';
 
@@ -52,10 +57,13 @@ exports.getBlogById = async (req, res) => {
 
   try {
     const [blogs] = await db.query(
-      `SELECT b.id, b.title, b.description, b.image_url, b.location, b.category, b.created_at, b.created_by, u.name as author 
+      `SELECT b.id, b.title, b.description, b.image_url, b.location, b.category, b.created_at, b.created_by, u.name as author,
+              COALESCE(AVG(r.rating), 0) as average_rating, COUNT(r.id) as review_count
        FROM blogs b 
        JOIN users u ON b.created_by = u.id 
-       WHERE b.id = ?`,
+       LEFT JOIN reviews r ON b.id = r.blog_id
+       WHERE b.id = ?
+       GROUP BY b.id, u.name`,
       [id]
     );
 

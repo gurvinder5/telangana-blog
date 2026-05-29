@@ -97,5 +97,27 @@ export const apiService = {
     return apiRequest(`/blogs/${id}`, {
       method: 'DELETE'
     });
+  },
+
+  // Contact Form Submission Route
+  submitContact: (contactData) => {
+    return apiRequest('/contacts', {
+      method: 'POST',
+      body: JSON.stringify(contactData)
+    });
+  },
+
+  // Blog Reviews Routes
+  getReviews: (blogId) => {
+    return apiRequest(`/blogs/${blogId}/reviews`, {
+      method: 'GET'
+    });
+  },
+
+  submitReview: (blogId, reviewData) => {
+    return apiRequest(`/blogs/${blogId}/reviews`, {
+      method: 'POST',
+      body: JSON.stringify(reviewData)
+    });
   }
 };

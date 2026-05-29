@@ -24,9 +24,11 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 // Import and mount modular route systems
 const authRoutes = require('./routes/authRoutes');
 const blogRoutes = require('./routes/blogRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/blogs', blogRoutes);
+app.use('/api/contacts', contactRoutes);
 
 // Root status endpoint for api verification
 app.get('/api/status', (req, res) => {

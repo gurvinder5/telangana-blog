@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { apiService } from '../services/api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,8 @@ const Contact = () => {
     message: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const { name, email, subject, message } = formData;
 
@@ -18,23 +21,33 @@ const Contact = () => {
     });
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     if (!name || !email || !subject || !message) return;
 
-    // Simulate sending message
-    setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: ''
-    });
+    setIsLoading(true);
+    setError(null);
+    setSubmitted(false);
 
-    // Reset success banner after 5 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 6000);
+    try {
+      await apiService.submitContact({ name, email, subject, message });
+      setSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+
+      // Reset success banner after 6 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 6000);
+    } catch (err) {
+      setError(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -128,11 +141,22 @@ const Contact = () => {
 
             {submitted && (
               <div className="alert alert-success border-0 p-3 rounded-3 mb-4" role="alert">
-                <h6 className="fw-bold mb-1">
+                <h6 className="fw-bold mb-1 text-success">
                   <i className="bi bi-check-circle-fill me-2"></i> Message Sent Successfully!
                 </h6>
                 <p className="small mb-0 text-muted">
                   Thank you for reaching out. A Telangana Tourism representative will review your message shortly.
+                </p>
+              </div>
+            )}
+
+            {error && (
+              <div className="alert alert-danger border-0 p-3 rounded-3 mb-4" role="alert">
+                <h6 className="fw-bold mb-1 text-danger">
+                  <i className="bi bi-exclamation-triangle-fill me-2"></i> Submission Failed
+                </h6>
+                <p className="small mb-0 text-muted">
+                  {error}
                 </p>
               </div>
             )}
@@ -149,6 +173,7 @@ const Contact = () => {
                     value={name}
                     onChange={handleInputChange}
                     required
+                    disabled={isLoading}
                   />
                 </div>
                 <div className="col-md-6">
@@ -161,6 +186,7 @@ const Contact = () => {
                     value={email}
                     onChange={handleInputChange}
                     required
+                    disabled={isLoading}
                   />
                 </div>
               </div>
@@ -175,6 +201,7 @@ const Contact = () => {
                   value={subject}
                   onChange={handleInputChange}
                   required
+                  disabled={isLoading}
                 />
               </div>
 
@@ -188,11 +215,23 @@ const Contact = () => {
                   value={message}
                   onChange={handleInputChange}
                   required
+                  disabled={isLoading}
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn btn-primary-custom w-100 py-2.5 rounded-3">
-                Send Message
+              <button
+                type="submit"
+                className="btn btn-primary-custom w-100 py-2.5 rounded-3 d-flex align-items-center justify-content-center gap-2"
+                disabled={isLoading}
+              >
+                {isLoading ? (
+                  <>
+                    <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    Sending Message...
+                  </>
+                ) : (
+                  'Send Message'
+                )}
               </button>
             </form>
           </div>
