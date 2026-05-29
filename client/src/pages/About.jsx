@@ -14,7 +14,12 @@ const About = () => {
       {/* Page Hero Header */}
       <section className="py-5 bg-dark text-white text-center position-relative overflow-hidden" style={{ background: 'linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), url("https://images.unsplash.com/photo-1628155930542-3c7a64e2c833?auto=format&fit=crop&w=1200&q=80") no-repeat center center/cover' }}>
         <div className="container py-4">
-          <span className="badge bg-warning text-dark px-3 py-2 rounded-pill mb-3 font-weight-600">ABOUT THE STATE</span>
+          <div className="mb-4 text-center d-flex justify-content-center">
+            <div style={{ background: 'rgba(255, 255, 255, 0.95)', padding: '6px 16px', borderRadius: '50px', display: 'inline-flex', alignItems: 'center', gap: '8px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)' }}>
+              <img src="/logo-emblem.png" alt="Telangana Emblem" style={{ height: '30px', width: 'auto' }} />
+              <span className="text-dark fw-bold" style={{ fontSize: '0.85rem', letterSpacing: '0.05em' }}>ABOUT THE STATE</span>
+            </div>
+          </div>
           <h1 className="display-4 fw-bold mb-3">Glorious Telangana</h1>
           <p className="lead text-light max-w-2xl mx-auto fs-5 opacity-90">
             A land where antiquity meets technological modernity, rich history blends with natural beauty, and vibrant festivals paint the Deccan Plateau.

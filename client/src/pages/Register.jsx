@@ -67,10 +67,10 @@ const Register = ({ addToast }) => {
         <div className="col-md-6 col-lg-5">
           <div className="form-card-custom">
             <div className="text-center mb-4">
-              <div className="d-inline-flex align-items-center justify-content-center bg-teal-light text-primary-color rounded-circle mb-3" style={{ width: '60px', height: '60px', backgroundColor: 'rgba(13, 148, 136, 0.1)' }}>
-                <i className="bi bi-person-plus fs-3" style={{ color: 'var(--primary-color)' }}></i>
+              <div className="d-inline-flex align-items-center justify-content-center mb-3">
+                <img src="/logo-vertical.png" alt="Telangana Tourism" style={{ maxHeight: '110px', width: 'auto' }} />
               </div>
-              <h2 className="fw-bold mb-1">Create Account</h2>
+              <h3 className="fw-bold mb-1">Create Account</h3>
               <p className="text-muted small">Sign up to document your explorations in Telangana</p>
             </div>
 

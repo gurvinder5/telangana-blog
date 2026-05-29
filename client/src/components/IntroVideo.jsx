@@ -229,19 +229,17 @@ const IntroVideo = ({ onFinish }) => {
           position: 'absolute',
           top: '2rem',
           left: '2rem',
-          color: 'rgba(255,255,255,0.95)',
-          fontFamily: "'Outfit', sans-serif",
-          fontWeight: 800,
-          fontSize: '1.25rem',
-          letterSpacing: '-0.02em',
-          background: 'linear-gradient(135deg, #2dd4bf, #f59e0b)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          textShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          background: 'rgba(255, 255, 255, 0.95)',
+          backdropFilter: 'blur(8px)',
+          padding: '6px 12px',
+          borderRadius: '10px',
+          boxShadow: '0 4px 30px rgba(0,0,0,0.3)',
+          display: 'flex',
+          alignItems: 'center',
           zIndex: 3,
         }}
       >
-        Telangana Tourism
+        <img src="/logo-horizontal.png" alt="Telangana Tourism" style={{ height: '32px', width: 'auto' }} />
       </div>
 
       {/* Audio Mute/Unmute toggle (bottom-left) */}

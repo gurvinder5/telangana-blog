@@ -12,8 +12,10 @@ const Navbar = ({ user, onLogout }) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top">
       <div className="container">
-        <Link className="navbar-brand navbar-brand-custom" to="/">
-          <i className="bi bi-compass-fill me-2 text-warning"></i>Telangana Tourism
+        <Link className="navbar-brand d-flex align-items-center" to="/" style={{ padding: 0 }}>
+          <div style={{ background: '#fff', padding: '3px 8px', borderRadius: '8px', display: 'flex', alignItems: 'center' }}>
+            <img src="/logo-horizontal.png" alt="Telangana Tourism" style={{ height: '36px', width: 'auto' }} />
+          </div>
         </Link>
         <button
           className="navbar-toggler border-0"
