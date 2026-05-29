@@ -128,7 +128,7 @@ function App() {
           <div className="row g-4 mb-4">
             <div className="col-lg-5">
               <div className="mb-3 d-inline-block" style={{ background: '#fff', padding: '6px 12px', borderRadius: '8px' }}>
-                <img src="/logo-horizontal.png" alt="Telangana Tourism Logo" style={{ height: '36px', width: 'auto' }} />
+                <img src={`${import.meta.env.BASE_URL}logo-horizontal.png`} alt="Telangana Tourism Logo" style={{ height: '36px', width: 'auto' }} />
               </div>
               <p className="small max-w-sm" style={{ lineHeight: '1.7' }}>
                 A modern full-stack tourism blogging platform promoting the majestic landmarks, rich temples, cascading waterfalls, local culinary arts, and cultural festivals of India's youngest state.

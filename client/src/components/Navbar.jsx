@@ -14,7 +14,7 @@ const Navbar = ({ user, onLogout }) => {
       <div className="container">
         <Link className="navbar-brand d-flex align-items-center" to="/" style={{ padding: 0 }}>
           <div style={{ background: '#fff', padding: '3px 8px', borderRadius: '8px', display: 'flex', alignItems: 'center' }}>
-            <img src="/logo-horizontal.png" alt="Telangana Tourism" style={{ height: '36px', width: 'auto' }} />
+            <img src={`${import.meta.env.BASE_URL}logo-horizontal.png`} alt="Telangana Tourism" style={{ height: '36px', width: 'auto' }} />
           </div>
         </Link>
         <button

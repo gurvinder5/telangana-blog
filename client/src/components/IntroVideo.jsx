@@ -123,7 +123,7 @@ const IntroVideo = ({ onFinish }) => {
       {/* Video element */}
       <video
         ref={videoRef}
-        src="/intro.mp4"
+        src={`${import.meta.env.BASE_URL}intro.mp4`}
         autoPlay
         muted={isMuted}
         playsInline
@@ -239,7 +239,7 @@ const IntroVideo = ({ onFinish }) => {
           zIndex: 3,
         }}
       >
-        <img src="/logo-horizontal.png" alt="Telangana Tourism" style={{ height: '32px', width: 'auto' }} />
+        <img src={`${import.meta.env.BASE_URL}logo-horizontal.png`} alt="Telangana Tourism" style={{ height: '32px', width: 'auto' }} />
       </div>
 
       {/* Audio Mute/Unmute toggle (bottom-left) */}

@@ -61,7 +61,7 @@ const Login = ({ onLogin, addToast }) => {
           <div className="form-card-custom">
             <div className="text-center mb-4">
               <div className="d-inline-flex align-items-center justify-content-center mb-3">
-                <img src="/logo-vertical.png" alt="Telangana Tourism" style={{ maxHeight: '110px', width: 'auto' }} />
+                <img src={`${import.meta.env.BASE_URL}logo-vertical.png`} alt="Telangana Tourism" style={{ maxHeight: '110px', width: 'auto' }} />
               </div>
               <h3 className="fw-bold mb-1">Welcome Back</h3>
               <p className="text-muted small">Log in to post and manage your Telangana travel blogs</p>

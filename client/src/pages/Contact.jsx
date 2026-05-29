@@ -69,7 +69,7 @@ const Contact = () => {
           <div className="d-flex flex-column gap-3 h-100">
             {/* Logo Card */}
             <div className="card border-0 p-4 shadow-sm text-center" style={{ borderRadius: '16px', background: '#fff' }}>
-              <img src="/logo-vertical.png" alt="Telangana Tourism Logo" style={{ maxHeight: '110px', width: 'auto', margin: '0 auto' }} />
+              <img src={`${import.meta.env.BASE_URL}logo-vertical.png`} alt="Telangana Tourism Logo" style={{ maxHeight: '110px', width: 'auto', margin: '0 auto' }} />
             </div>
             {/* Address Card */}
             <div className="card border-0 p-4 shadow-sm" style={{ borderRadius: '16px' }}>

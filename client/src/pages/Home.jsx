@@ -63,7 +63,7 @@ const Home = () => {
             <div className="col-lg-10">
               <div className="mb-4 d-flex justify-content-center animate__animated animate__fadeInDown">
                 <div style={{ background: 'rgba(255, 255, 255, 0.95)', padding: '8px 20px', borderRadius: '50px', boxShadow: '0 8px 32px rgba(0,0,0,0.15)', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
-                  <img src="/logo-emblem.png" alt="Telangana Emblem" style={{ height: '35px', width: 'auto' }} />
+                  <img src={`${import.meta.env.BASE_URL}logo-emblem.png`} alt="Telangana Emblem" style={{ height: '35px', width: 'auto' }} />
                   <span className="text-dark fw-bold" style={{ fontSize: '0.9rem', letterSpacing: '0.05em' }}>OFFICIAL TRAVEL PORTAL</span>
                 </div>
               </div>
