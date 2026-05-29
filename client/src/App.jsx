@@ -6,6 +6,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 // Components
 import Navbar from './components/Navbar';
+import IntroVideo from './components/IntroVideo';
 import ProtectedRoute from './components/ProtectedRoute';
 
 // Pages
@@ -22,6 +23,16 @@ import Register from './pages/Register';
 function App() {
   const [user, setUser] = useState(null);
   const [toasts, setToasts] = useState([]);
+
+  // Show intro video only once per browser session
+  const [showIntro, setShowIntro] = useState(
+    () => !sessionStorage.getItem('intro_played')
+  );
+
+  const handleIntroFinish = () => {
+    sessionStorage.setItem('intro_played', 'true');
+    setShowIntro(false);
+  };
 
   // Load session from local storage on initial mount
   useEffect(() => {
@@ -68,6 +79,8 @@ function App() {
   };
 
   return (
+    <>
+      {showIntro && <IntroVideo onFinish={handleIntroFinish} />}
     <Router>
       {/* Navigation bar */}
       <Navbar user={user} onLogout={handleLogout} />
@@ -181,6 +194,7 @@ function App() {
         ))}
       </div>
     </Router>
+    </>
   );
 }
 
